@@ -5,15 +5,15 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.cino.SpringBootTutorialH2DatabaseJDBC.model.Users;
-import com.cino.SpringBootTutorialH2DatabaseJDBC.repository.UserRepository;
+import com.cino.SpringBootTutorialH2DatabaseJDBC.repository.UsersRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class UsersService {
 
-	private final UserRepository usersRepository;
+	private final UsersRepository usersRepository;
 
 	public List<Users> getUsers() {
 		return usersRepository.findAll();

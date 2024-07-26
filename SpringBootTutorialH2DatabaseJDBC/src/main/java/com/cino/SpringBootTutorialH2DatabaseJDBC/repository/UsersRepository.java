@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import com.cino.SpringBootTutorialH2DatabaseJDBC.model.Users;
 
 @Repository
-public interface UserRepository extends ListCrudRepository<Users, Integer>, JpaRepository<Users, Integer> {
+public interface UsersRepository extends JpaRepository<Users, Integer> {
 
 }
