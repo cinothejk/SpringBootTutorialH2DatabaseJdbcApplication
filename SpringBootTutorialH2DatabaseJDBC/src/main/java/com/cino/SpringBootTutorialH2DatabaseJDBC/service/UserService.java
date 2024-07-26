@@ -9,33 +9,37 @@ import com.cino.SpringBootTutorialH2DatabaseJDBC.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
-private final UserRepository userRepository;
-	
+	private final UserRepository usersRepository;
+
 	public List<Users> getUsers() {
-		return userRepository.findAll();
+		return usersRepository.findAll();
 	}
 	
 	public Users getUserById(Integer id) {
-		return userRepository.findById(id).orElse(null);
+		return usersRepository.findById(id).orElse(null);
 	}
 	
 	public Users createUser(Users user) {
-		return userRepository.save(user);
+		return usersRepository.save(user);
+	}
+	
+	public List<Users> createAllUser(List<Users> users) {
+		return usersRepository.saveAll(users);
 	}
 	
 	public Users updateUser(Users user) {
-		return userRepository.save(user);
+		return usersRepository.save(user);
 	}
 	
 	public Users patchUser(Users user) {
-		return userRepository.save(user);
+		return usersRepository.save(user);
 	}
 	
 	public void deleteUser(Users user) {
-		userRepository.delete(user);
+		usersRepository.delete(user);
 	}
 }

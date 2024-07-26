@@ -9,50 +9,52 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import lombok.RequiredArgsConstructor;
 
 import com.cino.SpringBootTutorialH2DatabaseJDBC.model.Users;
 import com.cino.SpringBootTutorialH2DatabaseJDBC.service.UserService;
 
-import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/crud")
 @RequiredArgsConstructor
 public class UserController {
 
-private final UserService userService;
-	
-	@GetMapping
-	public List<Users> getUsers() {
-		return userService.getUsers();
-	}
-	
-	@GetMapping("/{id}")
-	public Users getUserById(@PathVariable Integer id) {
-		return userService.getUserById(id);
-	}
-	
-	@PostMapping
-	public Users createUser(@RequestBody Users user) {
-		return userService.createUser(user);
-	}
-	
-	@PutMapping
-	public Users updateUser(@RequestBody Users user) {
-		return userService.updateUser(user);
-	}
-	
-	@PatchMapping
-	public Users patchUser(@RequestBody Users user) {
-		return userService.patchUser(user);
-	}
-	
-	@DeleteMapping
-	public void deleteUser(@RequestBody Users user) {
-		userService.deleteUser(user);
-	}
-	
-	
+		private final UserService usersService;
+			
+		@GetMapping("/user")
+		public List<Users> getUsers() {
+			return usersService.getUsers();
+		}
+		
+		@GetMapping("/user/{id}")
+		public Users getUserById(@PathVariable Integer id) {
+			return usersService.getUserById(id);
+		}
+		
+		@PostMapping("/user")
+		public Users createUser(@RequestBody Users user) {
+			return usersService.createUser(user);
+		}
+		
+		@PostMapping("/users")
+		public List<Users> createAllUser(@RequestBody List<Users> users) {
+			return usersService.createAllUser(users);
+		}
+		
+		@PutMapping("/user")
+		public Users updateUser(@RequestBody Users user) {
+			return usersService.updateUser(user);
+		}
+		
+		@PatchMapping("/user")
+		public Users patchUser(@RequestBody Users user) {
+			return usersService.patchUser(user);
+		}
+		
+		@DeleteMapping("/user")
+		public void deleteUser(@RequestBody Users user) {
+			usersService.deleteUser(user);
+}
 }
